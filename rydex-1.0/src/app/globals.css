@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+:root {
+  --spacing: 0.25rem; /* Tailwind base spacing unit */
+  --tw-border-style: solid;
+  --color-white: #ffffff;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-black: #000000;
+  --radius-3xl: 1.5rem;
+  --blur-sm: 4px;
+  
+  --container-md: 28rem; /* Tailwind’s default for max-w-md */
+  --color-zinc-100: #f4f4f5; /* Tailwind’s zinc-100 */
+  --spacing: 0.25rem; /* Tailwind’s base spacing unit */
+
+}
+.fixed.inset-0 {
+  inset: 0; /* ensure full coverage */
+}
