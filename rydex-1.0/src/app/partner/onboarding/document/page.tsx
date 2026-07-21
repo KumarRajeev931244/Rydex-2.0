@@ -36,7 +36,7 @@ export default function page() {
       
       console.log(data);
       setLoading(false)
-      router.push("/")
+      router.push("/partner/onboarding/bank")
     } catch (error:any) {
       setError(error?.response?.data?.message || "something went wrong")
       setLoading(false)

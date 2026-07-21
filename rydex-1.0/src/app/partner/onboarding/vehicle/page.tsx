@@ -29,6 +29,7 @@ export default function Page() {
       const {data} = await axios.post("/api/partner/onboarding/vehicle",{type:vehicleType, number:vehicleNumber, vehicleModel})
       console.log(data);
       setLoading(false)
+       router.push("/partner/onboarding/document")
     } catch (error:any) {
       setErr(error?.response?.data?.message || "something went wrong")
       console.log(error);

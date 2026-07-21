@@ -29,10 +29,11 @@ export default function AdminDashboard(){
     const handleGetData = async() => {
         try {
             const {data} = await axios.get("/api/admin/dashboard")
+            // console.log("admninDashboard:",data);
             setStats(data.stats)
             setPartnerReview(data.pendingPartnerReviews )
             setVehicleReview(data.pendingVehicles)
-            console.log("admninDashboard:",data);
+            // console.log("admninDashboard:",data);
         } catch (error) {
             console.log(error);
             
@@ -43,7 +44,7 @@ export default function AdminDashboard(){
         try {
             const {data} = await axios.get("/api/admin/video-kyc/pending")
             setPendingKyc(data);
-            console.log(data);
+            // console.log(data);
         } catch (error) {
             console.log(error);
             

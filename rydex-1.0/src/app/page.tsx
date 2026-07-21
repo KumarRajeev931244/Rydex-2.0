@@ -13,20 +13,21 @@ export default async function Home() {
   await connectDb()
   const session = await auth()
   const user = await User.findOne({email:session?.user?.email})
+  const plainUser = JSON.parse(JSON.stringify(user))
 
   
  return(
   <div className="w-full min-h-screen bg-white">
-    <GeoUpdater userId={user?._id?.toString()} />
+    <GeoUpdater userId={plainUser?._id} />
     
-    {user?.role == "partner" ? 
+    {plainUser?.role == "partner" ? 
     <>
     <Nav/>
     <PartnerDashboard/>
     </>
      :
     (
-      user?.role == "admin" ? <AdminDashboard/> : 
+      plainUser?.role == "admin" ? <AdminDashboard/> : 
       <>
       <Nav/>
       <PublicHome/>

@@ -32,6 +32,7 @@ export default function Page() {
       })
       console.log("bank data:",data);
       setLoading(false);
+      window.location.href="/"
       
     } catch (error:any ) {
       setErr(error?.response?.data?.message || "something went wrong")

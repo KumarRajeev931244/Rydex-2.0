@@ -39,9 +39,9 @@ function page() {
         const load = async() => {
             try {
                 const result = await axios.get(`/api/admin/reviews/vehicle/${id}`)
-                console.log("result:",result);
+                // console.log("result:",result);
                 setData(result.data)
-                router.push("/")
+            
             } catch (error:any) {
                 console.log(error.response.data.message?? error);
                 
@@ -62,7 +62,7 @@ function page() {
             setApproveLoading(true)
             try {
                 const {data} = await axios.get(`/api/admin/reviews/vehicle/${id}/approve`);
-                console.log("approved data:",data);
+                // console.log("approved data:",data);
                 setApproveLoading(false)
                 router.push("/")
             } catch (error) {
@@ -78,7 +78,7 @@ function page() {
                 const {data} = await axios.post(`/api/admin/reviews/vehicle/${id}/reject`,{
                     reason:rejectionReason
                 });
-                console.log("rejection data:",data);
+                // console.log("rejection data:",data);
                  setRejectLoading(false)
                  router.push("/")
             } catch (error) {

@@ -8,12 +8,17 @@ export async function GET(req:NextRequest){
     try {
         await connectDb();
         const session = await auth()
-        console.log(session);
-        if(!session || !session.user?.email || session.user?.role !=="admin"){
+        console.log("session:",session);
+        if(!session || !session.user?.email || session?.user?.role !=="admin"){
             return Response.json(
                     {message:"unauthorised"}, 
                     { status: 400 });
         }
+        
+const user = await User.findOne({ email: session?.user?.email });
+if (!user || user.role !== "admin") {
+  return NextResponse.json({ message: "unauthorised" }, { status: 400 });
+}
         const totalPartners = await User.countDocuments({role:"partner"})
         const totalApprovedPartners = await User.countDocuments({role:"partner", partnerStatus:"approved"})
         const totalPendingPartners = await User.countDocuments({role:"partner", partnerStatus:"pending"})
